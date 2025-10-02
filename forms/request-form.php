@@ -37,10 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->addAddress('aquaprolpleads@gmail.com');
 
         // Add CC recipients
-        $mail->addCC('harry@astraresults.com');
-        $mail->addCC('development@astraresults.com');
-        
-        $mail->addCC('joseph@astraresults.com');
+        // $mail->addCC('harry@astraresults.com');
+        // $mail->addCC('development@astraresults.com');
+        // $mail->addCC('joseph@astraresults.com');
 
         // Content
         $mail->isHTML(true);
