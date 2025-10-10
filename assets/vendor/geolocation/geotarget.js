@@ -1,9 +1,9 @@
 (async function () {
 
-    // 🔹 Default fallback location (update if you want another city)
-    const DEFAULT_LOCATION = { "Criteria ID": "1002009", Name: "MIAMI" };
+    // 🔹 Default fallback location
+    const DEFAULT_LOCATION = { Name: "United States" };
 
-    // 1️⃣ Fetch CSV
+    // 1️⃣ Fetch CSV file
     async function fetchLocationsCSV(url) {
         try {
             const res = await fetch(url);
@@ -25,72 +25,36 @@
         }
     }
 
-    // 2️⃣ Detect user city via IP
-    async function detectUserCity() {
-        try {
-            const res = await fetch("https://ipapi.co/json/");
-            const data = await res.json();
-            return data.city; // returns city name
-        } catch (err) {
-            console.error("Could not detect user city:", err);
-            return null;
-        }
-    }
-
-    const csvUrl = "https://aquapropc.com/aquapro-lp/locations.csv";
+    // 2️⃣ Load CSV
+    const csvUrl = "/locations.csv";
     const locations = await fetchLocationsCSV(csvUrl);
 
+    // 3️⃣ Get ?location parameter (if any)
     const params = new URLSearchParams(window.location.search);
     let locationId = params.get("location");
 
-    // 🔹 Clean Criteria ID from URL (remove parentheses, quotes, trim spaces)
+    // 4️⃣ Determine location name
+    let locationName = DEFAULT_LOCATION.Name;
+
     if (locationId) {
+        // Clean ID from quotes/parentheses
         locationId = locationId.replace(/[()"']/g, "").trim();
-    }
 
-    // 3️⃣ If no ?location=, detect user city and redirect with Criteria ID
-    if (!locationId) {
-        const userCity = await detectUserCity();
-
-        let match = null;
-        if (userCity) {
-            match = locations.find(loc =>
-                loc.Name.toLowerCase() === userCity.toLowerCase() ||
-                loc["Canonical Name"].toLowerCase().includes(userCity.toLowerCase())
-            );
-        }
-
-        // If no match, fallback to DEFAULT
-        if (!match) {
-            match = DEFAULT_LOCATION;
-        }
-
-        // 🔹 Ensure Criteria ID has no quotes
-        let cleanId = match["Criteria ID"].replace(/^"|"$/g, "").trim();
-
-        const url = new URL(window.location.href);
-        url.searchParams.set("location", cleanId);
-        window.location.replace(url.toString());
-
-    }
-    // 4️⃣ If ?location= exists, replace <span id="location">
-    else {
-        let match = locations.find(loc => {
-            let cleanId = loc["Criteria ID"].replace(/^"|"$/g, "").trim();
+        // Find match in CSV
+        const match = locations.find(loc => {
+            const cleanId = loc["Criteria ID"].replace(/^"|"$/g, "").trim();
             return cleanId === locationId;
         });
 
-        // If no match in CSV, fallback to default
-        if (!match) {
-            match = DEFAULT_LOCATION;
+        if (match) {
+            locationName = match.Name.replace(/^"|"$/g, "").trim();
         }
-
-        // Clean up name: remove extra quotes and convert to ALL CAPS
-        let locationName = match.Name.replace(/^"|"$/g, "").toUpperCase();
-
-        const locationSpans = document.querySelectorAll("#location"); // support multiple spans
-        locationSpans.forEach(span => {
-            span.textContent = locationName;
-        });
     }
+
+    // 5️⃣ Update all <span id="location"> elements
+    const locationSpans = document.querySelectorAll("#location");
+    locationSpans.forEach(span => {
+        span.textContent = locationName.toUpperCase();
+    });
+
 })();
