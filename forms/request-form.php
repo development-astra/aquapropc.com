@@ -8,6 +8,19 @@ require __DIR__ . '/../PHPMailer/src/SMTP.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    // reCAPTCHA secret key (replace this with your own from Google)
+    $recaptchaSecret = '6Lfys_krAAAAAMKCq6KA2K4_dqcKfBNWnLCVTysQ';
+    $recaptchaResponse = $_POST['g-recaptcha-response'] ?? '';
+
+    // Verify reCAPTCHA
+    $verifyResponse = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$recaptchaSecret}&response={$recaptchaResponse}");
+    $responseData = json_decode($verifyResponse);
+
+    if (!$responseData->success) {
+        header("Location: /aqua-pro/form-error.html");
+        exit;
+    }
+
     $name    = trim($_POST['full_name'] ?? '');
     $email   = trim($_POST['email'] ?? '');
     $phone   = trim($_POST['phone'] ?? '');

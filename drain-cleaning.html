@@ -174,61 +174,6 @@
 
         <div class="row justify-content-center">
           <div class=" col-lg-8">
-            <!-- <form action="https://aquapropc.com/aquapro-lp/forms/request-form.php" method="POST"
-              class="contact-form row g-3">
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <input type="text" class="form-control" name="full_name" placeholder="Your full name" required>
-                  <label>Full name</label>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <input type="email" class="form-control" name="email" placeholder="name@example.com" required>
-                  <label>Email address</label>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <input type="tel" class="form-control" name="phone" placeholder="Your phone number" required>
-                  <label>Phone number</label>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <select class="form-select" name="service" required>
-                    <option value="" disabled selected>Select a service</option>
-                    <option value="Camera Inspection">Camera Inspection</option>
-                    <option value="Drain-Cleaning">Drain-Cleaning</option>
-                    <option value="Trenchless-Pipelining">Trenchless-Pipelining</option>
-                  </select>
-                  <label>Select a service</label>
-                </div>
-              </div>
-              <div class="col-12">
-                <button type="submit"
-                  class="btn montserrat-700 text-uppercase text-white fs-5 w-100 d-flex align-items-center justify-content-center text-center">
-                  Get Help Now
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
-                    <g clip-path="url(#clip0_296_880)">
-                      <path
-                        d="M14.3117 9.6767L3.03678 16.1282C1.94321 16.7531 0.659276 15.6742 1.0889 14.4903L3.25403 8.5002L1.0889 2.51001C0.659276 1.32363 1.94321 0.247196 3.03678 0.872071L14.3117 7.32357C15.2245 7.84351 15.2222 9.15676 14.3117 9.6767Z"
-                        fill="white" />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_296_880">
-                        <rect width="16" height="16" fill="white" transform="translate(0 0.5)" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </button>
-                <p class="montserrat-400 fw-normal text-white text-center mt-2">
-                  All of your personal information is stored in a safe location.
-                </p>
-              </div>
-            </form> -->
-            <!-- Contact Form -->
-
             <form action="https://aquapropc.com/aquapro-lp/forms/request-form.php" method="POST"
               class="contact-form row g-3">
               <div class="col-md-6">
@@ -263,6 +208,10 @@
                   <label>Select a service</label>
                 </div>
               </div>
+
+              <div class="col-md-12">
+                <div class="g-recaptcha" data-sitekey="6Lfys_krAAAAAJbUwz-nEWn3fZVoDHa1tsYKp_Bp"></div>
+              </div><!-- Google reCAPTCHA -->
 
               <div class="col-12">
                 <button type="submit"
@@ -903,6 +852,10 @@
                 </div>
               </div>
 
+              <div class="col-md-12">
+                <div class="g-recaptcha" data-sitekey="6Lfys_krAAAAAJbUwz-nEWn3fZVoDHa1tsYKp_Bp"></div>
+              </div><!-- Google reCAPTCHA -->
+
               <div class="col-12">
                 <button type="submit"
                   class="btn montserrat-700 text-uppercase text-white fs-5 w-100 d-flex align-items-center justify-content-center text-center">
@@ -1007,6 +960,9 @@
 
   <!-- CallRail -->
   <script type="text/javascript" src="//cdn.callrail.com/companies/460513014/3b00420ddeaabddb48b8/12/swap.js"></script>
+
+  <!-- Google reCAPTCHA API -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
 </html>
