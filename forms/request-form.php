@@ -22,11 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $name    = trim($_POST['full_name'] ?? '');
+    $address   = trim($_POST['address'] ?? '');
     $email   = trim($_POST['email'] ?? '');
     $phone   = trim($_POST['phone'] ?? '');
     $service = trim($_POST['service'] ?? '');
 
-    if (!$name || !$email || !$phone || !$service) {
+    if (!$name || !$address || !$email || !$phone || !$service) {
         header("Location: https://aquapropc.com/aquapro-lp/form-error.html");
         exit;
     }
@@ -60,6 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->Body    = "
             <h3>New Request Form Submission</h3>
             <p><strong>Full Name:</strong> $name</p>
+            <p><strong>Address:</strong> $address</p>
             <p><strong>Email:</strong> $email</p>
             <p><strong>Phone:</strong> $phone</p>
             <p><strong>Service:</strong> $service</p>
