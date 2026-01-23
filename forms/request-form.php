@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Add CC recipients
         // $mail->addCC('harry@astraresults.com');
-        // $mail->addCC('development@astraresults.com');
+        $mail->addCC('development@astraresults.com');
         // $mail->addCC('joseph@astraresults.com');
 
         // Content
