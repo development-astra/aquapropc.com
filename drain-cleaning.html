@@ -55,8 +55,8 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
 
   <!-- Main CSS File -->
-  <link href="https://aquapropc.com/aquapro-lp/assets/css/main.css" rel="stylesheet">
-  <!-- <link href="assets/css/main.css" rel="stylesheet"> -->
+  <!-- <link href="https://aquapropc.com/aquapro-lp/assets/css/main.css" rel="stylesheet"> -->
+  <link href="assets/css/main.css" rel="stylesheet">
 </head>
 
 <body class="index-page">
@@ -107,7 +107,7 @@
     <section id="hero" class="hero section">
       <div class="hero-background">
         <div class="hero-overlay"></div>
-      </div><!-- Hero Background -->
+      
 
       <div class="owl-carousel hero-carousel d-block d-md-none">
         <div class="item">
@@ -135,7 +135,7 @@
             alt="Owl Carousel">
         </div> -->
       </div><!-- End Owl Carousel: Mobile Image Slider -->
-
+      </div><!-- Hero Background -->
       <div class="container mt-5">
         <div class="row justify-content-center text-center">
           <div class="col-lg-10">
@@ -936,24 +936,30 @@
   <script src="https://aquapropc.com/aquapro-lp/assets/js/main.js"></script>
 
   <script>
-    $(document).ready(function () {
+   $(document).ready(function () {
       $(".owl-carousel").owlCarousel({
         loop: true,
-        margin: 12,
+        margin: 8,
         autoplay: true,
         autoplayTimeout: 2500,
         autoplayHoverPause: true,
         dots: true,
         nav: false,
+        stagePadding: 0,
+        items: 2,
+        center: false,
+        autoWidth: false, /* Force equal width items */
         responsive: {
           0: {
             items: 2,
-            center: true,
-            margin: 12
+            margin: 8,
+            stagePadding: 0,
+            center: false
           },
           768: {
             items: 3,
-            center: false
+            center: false,
+            margin: 12
           },
           1024: {
             items: 4

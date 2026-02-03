@@ -1242,7 +1242,7 @@ section,
     padding-bottom: 20px;
   }
 
-  .hero-carousel {
+  /* .hero-carousel {
     position: absolute;
     top: 9%;
     left: 0;
@@ -1254,8 +1254,43 @@ section,
     width: 50vw;
     height: auto;
     display: block;
+  } */
+  /* Constrain carousel within the hero background */
+  .hero-carousel {
+    position: absolute;
+    top: 9%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: calc(100% - 20px); /* Account for hero background inset of 10px on each side */
+    margin: 0 10px; /* Center it with same inset as background */
+    z-index: 5;
+    overflow: hidden; /* Prevent overflow */
   }
 
+  /* Constrain carousel items */
+  .hero-carousel .owl-stage-outer {
+    overflow: hidden;
+    border-radius: 12px; /* Optional: match the hero background radius */
+  }
+
+  /* Adjust item image sizing */
+  .hero-carousel .item {
+    padding: 0 6px; /* Add small gap between images */
+  }
+
+  .hero-carousel .item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px; /* Optional: round the image corners */
+  }
+
+  /* Adjust Owl Carousel dots position if needed */
+  .hero-carousel .owl-dots {
+    margin-top: 10px;
+    text-align: center;
+  }
   .hero-container {
     position: relative;
     z-index: 3;
