@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://aquapropc.com/aquapro-lp/sitemap.xml
+Sitemap: https://yourdomain.com/sitemap.xml
